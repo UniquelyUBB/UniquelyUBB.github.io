@@ -1,4 +1,4 @@
-<UUBB Official Website>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,31 +50,42 @@
         }
 
         .logo-slot img {
-            width: 120px; /* Increased from 80px */
-            height: 120px; /* Increased from 80px */
+            width: 120px; 
+            height: 120px; 
             object-fit: cover;
             border-radius: 50%;
             background-color: #ddd; /* Fallback placeholder */
         }
 
         .company-name {
-            font-size: 1.2rem; /* Reverted from 1.6rem */
+            font-size: 1.2rem; 
             font-weight: 600;
             letter-spacing: 1px;
         }
 
         nav ul {
             display: flex;
-            align-items: center; /* Kept to maintain vertical alignment */
+            align-items: center; 
             list-style: none;
             gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Added li targeting for bulletproof alignment */
+        nav li {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
+            display: inline-flex; /* Changed to inline-flex to strip baseline issues */
+            align-items: center;
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
             font-size: 1rem;
+            line-height: 1; /* Removes any text bounding-box padding */
             transition: color 0.3s ease;
             cursor: pointer;
         }
