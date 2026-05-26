@@ -50,22 +50,22 @@
         }
 
         .logo-slot img {
-            width: 80px; /* Increased from 50px */
-            height: 80px; /* Increased from 50px */
+            width: 120px; /* Increased from 80px */
+            height: 120px; /* Increased from 80px */
             object-fit: cover;
             border-radius: 50%;
             background-color: #ddd; /* Fallback placeholder */
         }
 
         .company-name {
-            font-size: 1.6rem; /* Increased from 1.2rem */
+            font-size: 1.2rem; /* Reverted from 1.6rem */
             font-weight: 600;
             letter-spacing: 1px;
         }
 
         nav ul {
             display: flex;
-            align-items: center; /* Added to fix vertical alignment */
+            align-items: center; /* Kept to maintain vertical alignment */
             list-style: none;
             gap: 30px;
         }
