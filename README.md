@@ -72,20 +72,19 @@
             padding: 0;
         }
 
-        /* Added li targeting for bulletproof alignment */
         nav li {
             display: flex;
             align-items: center;
         }
 
         nav a {
-            display: inline-flex; /* Changed to inline-flex to strip baseline issues */
+            display: inline-flex;
             align-items: center;
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
             font-size: 1rem;
-            line-height: 1; /* Removes any text bounding-box padding */
+            line-height: 1;
             transition: color 0.3s ease;
             cursor: pointer;
         }
@@ -200,6 +199,22 @@
         .grid-card-info h3 {
             font-size: 1.1rem;
             font-weight: 600;
+        }
+
+        /* NEW: Added Category Title & Description Styling */
+        #current-category-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .category-description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.5;
         }
 
         /* --- Product Subpage Layout --- */
@@ -339,6 +354,7 @@
     <main id="category-items-view" class="view-page">
         <button class="back-btn" onclick="showView('categories-view')">← Back to Collections</button>
         <h2 id="current-category-title">Category Name</h2>
+        <p id="current-category-description" class="category-description"></p>
         <div class="grid-container" id="items-grid"></div>
     </main>
 
@@ -383,6 +399,8 @@
                 {
                     id: "necklaces",
                     name: "Necklaces",
+                    /* NEW: Added description field for each category */
+                    description: "Browse our beautiful selection of handcrafted necklaces, featuring vibrant stones and intricate metalwork.", 
                     image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -399,6 +417,7 @@
                 {
                     id: "bracelets",
                     name: "Bracelets",
+                    description: "Elegant cuffs and beaded wraps to perfectly accent your daily wardrobe.",
                     image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -414,6 +433,7 @@
                 {
                     id: "canine-necklaces",
                     name: "Canine Necklaces",
+                    description: "Luxury accessories designed specially for your four-legged friends.",
                     image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -429,6 +449,7 @@
                  {
                     id: "earrings",
                     name: "Earrings",
+                    description: "From subtle studs to dazzling dangles, find your perfect pair.",
                     image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -445,6 +466,7 @@
                  {
                     id: "eyeglass-lanyards",
                     name: "Eyeglass Lanyards",
+                    description: "Keep your glasses secure with these stylish and functional beaded lanyards.",
                     image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -460,6 +482,7 @@
                  {
                     id: "id-lanyards",
                     name: "ID Lanyards",
+                    description: "Upgrade your workwear with beautiful beaded ID holders.",
                     image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -475,6 +498,7 @@
                  {
                     id: "cellphone-lanyards",
                     name: "Cellphone Lanyards",
+                    description: "Charming wristlets and crossbody straps to keep your phone close at hand.",
                     image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -490,6 +514,7 @@
                  {
                     id: "purse-charms",
                     name: "Purse Charms",
+                    description: "Add a splash of personality and color to your favorite handbags.",
                     image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -505,6 +530,7 @@
                  {
                     id: "otherbeadedaccessories",
                     name: "Other Beaded Accessories",
+                    description: "A curated selection of unique beaded gifts and trinkets.",
                     image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=400&q=80",
                     items: [
                         {
@@ -567,6 +593,10 @@
             if(!category) return;
 
             document.getElementById('current-category-title').innerText = category.name;
+            
+            /* NEW: Inject the description text when the category opens */
+            document.getElementById('current-category-description').innerText = category.description || "";
+
             const container = document.getElementById('items-grid');
             container.innerHTML = "";
 
